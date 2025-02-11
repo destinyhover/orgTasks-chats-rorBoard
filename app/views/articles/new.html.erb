@@ -1,0 +1,17 @@
+<% content_for :title, "New article" %>
+<h1>New article</h1>
+
+<div class="d-flex gap-2">
+  <%= form_with model: @article, local: true, data: { turbo: false } do |f| %>
+ <p>
+    <%= f.label :title, class: "form-label " %>
+    <%= f.text_field :title, class: "form-control " %>
+  </p>
+  <p>
+    <%= f.label :text, class: "form-label" %>
+    <%= f.text_area :text, class: "form-control " %>
+  </p>
+
+  <p><%= f.submit "Post", class:"btn btn-dark btn-lg" %></p>
+<% end %>
+</div>

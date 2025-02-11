@@ -1,0 +1,12 @@
+<h1>Edit article</h1>
+<%=form_with model: @article, url:article_path(@article),method: :patch, local: true do |f|%>
+	
+	<%=f.label :title%>
+	<p><%= f.text_field :title %></p>
+	<%=f.label :text%>
+	<p><%= f.text_area :text %></p>
+
+	<p><%=f.submit%></p>
+	
+<%end%>
+<div><%=button_to "Show all articles", articles_path, method: :get, class: "btn btn-primary"%></div>
