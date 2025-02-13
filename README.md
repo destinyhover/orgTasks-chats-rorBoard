@@ -1,3 +1,3 @@
 # README
 
-ror-bootsrap-simpleblog
+Доска поручений для огранизации. 
