@@ -5,40 +5,43 @@
 	<p class="lead"><%=@article.text%></p>
 	
 	
-<div class="d-flex gap-2">	<%=link_to "Изменить", edit_article_path(@article), class: "btn btn-dark"%>
+<div class="d-flex gap-2">	<%=link_to "Изменить", edit_article_path(@article), class: "btn btn-outline-secondary btn-sm"%>
 	
 
-<%=button_to "Показать все поручения", articles_path, method: :get, class: "btn btn-dark"%></div>
+<%=button_to "Показать все поручения", articles_path, method: :get, class: "btn btn-outline-secondary btn-sm"%></div>
 <hr>
 <h3>Обсуждение:</h3>
-<div class="container">
+
+<div class="container mx-auto">
 <%@comment.each do |f| %>
 		<i><%=f.author%> сказала:</i>
 		<p><%=f.body%></p>
 
 <%end %>					
 </div>
-<hr>
+
 <p>
 
 <% if user_signed_in? %>
   <%= form_with(model: [@article, @article.comments.build], local: true) do |f| %>
     <%= f.hidden_field :username, value: current_user.username %>
 
-    <div class="container">
+    <div class="container mx-auto">
+      <div class="border border-muted p-3 rounded w-50">
       <p>
-    Имя<br> <strong><%= current_user.username %></strong>
+   <span class="form-control-plaintext"> Имя<br> <strong><%= current_user.username %></strong></span>
   </p>
     <p>
       <%= f.label :body, "Текст", class: "form-label" %>
       <%= f.text_area :body, class: "form-control w-50" %>
     </p>
 
-    <p><%= f.submit "Отправить", class: "btn btn-dark" %></p>
+    <p><%= f.submit "Отправить", class: "btn btn-outline-secondary btn-sm" %></p>
   <% end %>
 <% else %>
   <p>Вы должны <%= link_to "войти", new_user_session_path %>, чтобы оставить комментарий.</p>
 <% end %>
+</div>
 </div>
 </div>
 </div>
