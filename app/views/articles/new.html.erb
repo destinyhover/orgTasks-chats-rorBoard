@@ -1,17 +1,40 @@
-<% content_for :title, "New article" %>
+<% content_for :title, "Новое поручение" %>
 <h1>Новое поручение</h1>
 
 <div class="d-flex gap-2">
   <%= form_with model: @article, local: true, data: { turbo: false } do |f| %>
- <p>
-    <%= f.label "Заголовок", class: "form-label " %>
-    <%= f.text_field :title, class: "form-control " %>
-  </p>
-  <p>
-    <%= f.label "Текст", class: "form-label" %>
-    <%= f.text_area :text, class: "form-control " %>
-  </p>
+    <p>
+      <%= f.label :title, "Заголовок с датой", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </p>
+    <p>
+      <%= f.label :text, "Текст", class: "form-label" %>
+      <%= f.text_area :text, class: "form-control" %>
+    </p>
 
-  <p><%= f.submit "Отправить", class:"btn btn-dark btn-lg" %></p>
-<% end %>
+    <p><%= f.submit "Отправить", class:"btn btn-dark btn-lg" %></p>
+  <% end %>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    flatpickr("#datepicker_with_text", {
+      enableTime: true,        // Включает выбор времени
+      dateFormat: "Y-m-d H:i", // Формат даты и времени
+      time_24hr: true,         // 24-часовой формат
+      allowInput: true,        // Позволяет писать текст вручную
+      onChange: function(selectedDates, dateStr, instance) {
+        const input = document.getElementById("datepicker_with_text");
+
+        // Проверка, если в поле уже есть текст, то добавляем дату в конец
+        if (input.value) {
+          // Если в поле есть текст, добавляем дату в конец
+          input.value = input.value + " " + dateStr;
+        } else {
+          // Если поле пустое, то просто вставляем дату
+          input.value = dateStr;
+        }
+      }
+    });
+  });
+</script>
