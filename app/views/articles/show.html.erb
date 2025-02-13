@@ -10,23 +10,27 @@
 
 <%=button_to "Показать все поручения", articles_path, method: :get, class: "btn btn-dark"%></div>
 <hr>
-<p><h3>Обсуждение:</h3></p>	
-<p><%@comment.each do |f| %>
-		<i><%=f.author%> said:</i>
+<h3>Обсуждение:</h3>
+<div class="container">
+<%@comment.each do |f| %>
+		<i><%=f.author%> сказала:</i>
 		<p><%=f.body%></p>
 
-<%end %>					</p>
+<%end %>					
+</div>
 <hr>
 <p>
 
 <% if user_signed_in? %>
   <%= form_with(model: [@article, @article.comments.build], local: true) do |f| %>
     <%= f.hidden_field :username, value: current_user.username %>
+
+    <div class="container">
       <p>
-   <label> Имя</label><br> <strong><%= current_user.username %></strong>.
+    Имя<br> <strong><%= current_user.username %></strong>
   </p>
     <p>
-      <%= f.label "Текст", class: "form-label" %>
+      <%= f.label :body, "Текст", class: "form-label" %>
       <%= f.text_area :body, class: "form-control w-50" %>
     </p>
 
@@ -35,5 +39,6 @@
 <% else %>
   <p>Вы должны <%= link_to "войти", new_user_session_path %>, чтобы оставить комментарий.</p>
 <% end %>
+</div>
 </div>
 </div>
