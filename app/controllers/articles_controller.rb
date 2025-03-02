@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
   private
   def article_params
     # Разрешаем параметры title и text
-    params.require(:article).permit(:title, :text, :assigned_user_id)
+    params.require(:article).permit(:title, :text, :status, :assigned_user_id)
   end
 
   def authorize_user

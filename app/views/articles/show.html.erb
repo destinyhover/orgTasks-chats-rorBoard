@@ -1,17 +1,25 @@
 <% content_for :title, @article.title %>
 	<div class="row mb-4">
 		<div class="col-12">
+      <%# ЗАГОЛОВОК %>
 	<h2 class="display-5"><%=@article.title%></h2>
+            <%# СТАТУС %>
             <% if @article.assigned_user_id.present? %>
           <p class="text-muted">Поручено: <%= @article.assigned_user&.username || "Неизвестному пользователю" %></p>
         <% else %>
           <p class="text-muted">Поручено: <span class="text-warning">Не назначено</span></p>
         <% end %>
+
+
 	<p class="lead"><%=@article.text%></p>
 	
-	
-<div class="d-flex gap-2">	<%=link_to "Изменить", edit_article_path(@article), class: "btn btn-outline-secondary btn-sm"%>
-	
+<div class="d-flex gap-2">  	
+	<% if @article.in_progress? %>
+    <%= button_to "Выполнено", article_path(@article, article: { status: :completed }), method: :patch, class: "btn btn-success btn-sm" %>
+      <% else %>
+      <%= button_to "В работу", article_path(@article, article: { status: :in_progress }), method: :patch, class: "btn btn-warning btn-sm" %>
+        <% end %>
+<%=link_to "Изменить", edit_article_path(@article), class: "btn btn-outline-secondary btn-sm"%>
 
 <%=button_to "Показать все поручения", articles_path, method: :get, class: "btn btn-outline-secondary btn-sm"%></div>
 <hr>

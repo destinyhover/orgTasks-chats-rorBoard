@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    attributes:
+      article:
+        status:
+          in_progress: "В работе"
+          completed: "Выполнено"
