@@ -2,6 +2,11 @@
 	<div class="row mb-4">
 		<div class="col-12">
 	<h2 class="display-5"><%=@article.title%></h2>
+            <% if @article.assigned_user_id.present? %>
+          <p class="text-muted">Поручено: <%= @article.assigned_user&.username || "Неизвестному пользователю" %></p>
+        <% else %>
+          <p class="text-muted">Поручено: <span class="text-warning">Не назначено</span></p>
+        <% end %>
 	<p class="lead"><%=@article.text%></p>
 	
 	
