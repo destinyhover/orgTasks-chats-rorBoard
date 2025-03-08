@@ -26,7 +26,7 @@
         <div class="d-flex gap-2">
           <%= link_to "Развернуть", article_path(a), class: "btn btn-outline-secondary btn-sm" %>
 
-          <% if current_user.admin? %>
+          <% if current_user && current_user.admin? %>
             <%= link_to "Изменить", edit_article_path(a), class: "btn btn-outline-secondary btn-sm" %>
             <%= button_to "Удалить", article_path(a), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-outline-secondary btn-sm" %>
           <% end %>
