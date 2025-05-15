@@ -1,7 +1,26 @@
 ru:
+  devise:
+    registrations:
+      signed_up: "Вы успешно зарегистрировались"
+    sessions:
+      signed_in: "Вы вошли в систему"
+      signed_out: "Вы вышли из системы"
+    passwords:
+      send_instructions: "Инструкции отправлены"
+      updated: "Пароль успешно изменен"
+    failure:
+      unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
+      invalid: "Неверный email или пароль."
+      
   activerecord:
     attributes:
       article:
         status:
           in_progress: "В работе"
           completed: "Выполнено"
+  
+  contacts:
+    contact_us: "Свяжитесь с нами"
+    email: "Электронная почта"
+    message: "Сообщение"
+    submit: "Отправить"
