@@ -54,12 +54,20 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :text, :status, :assigned_user_id)
   end
 
-  def authorize_user
-    @article = Article.find(params[:id])
-    if current_user != @article.user
-      redirect_to articles_path, alert: "You are not authorized to perform this action."
-    end
+def authorize_user
+  @article = Article.find(params[:id])
+
+  # Если это update-запрос, и текущий пользователь — assigned_user
+  if action_name == "update" && @article.assigned_user_id == current_user.id
+    return
   end
+
+  # Остальные действия — только для автора
+  if current_user != @article.user
+    redirect_to articles_path, alert: "You are not authorized to perform this action."
+  end
+end
+
 
 
 end
