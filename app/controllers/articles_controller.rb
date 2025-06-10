@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     @article.user_id = current_user.id
 
     if @article.save
-      redirect_to articles_path(@article), notice: "Поручение создано!"
+      redirect_to articles_path(@article), notice: t('flash.articles.created')
     else
       render action: :new
     end
@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: "Поручение обновлено!"
+      redirect_to @article, notice: t('flash.articles.updated')
     else
       render :edit
     end
@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.comments.destroy_all
     @article.destroy # Удаляем статью вместе с комментариями
-    redirect_to articles_path, notice: "Поручение удалено."
+    redirect_to articles_path, t('flash.articles.deleted')
   end
 
   private
@@ -65,7 +65,7 @@ class ArticlesController < ApplicationController
 
     # Остальные действия доступны только автору
     if current_user != @article.user
-      redirect_to articles_path, alert: "У вас нет прав для выполнения этого действия."
+      redirect_to articles_path, alert: alert: t('flash.articles.unauthorized')
     end
   end
 end
