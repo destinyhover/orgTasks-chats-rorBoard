@@ -1,5 +1,6 @@
 <% content_for :title, "Новое поручение" %>
 <h1>Новое поручение</h1>
+<%= render "devise/shared/error_messages", resource: @article %>
 
 <div class="d-flex gap-2">
   <%= form_with model: @article, local: true, data: { turbo: false } do |f| %>
