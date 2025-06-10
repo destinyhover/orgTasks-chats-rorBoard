@@ -1,29 +1,29 @@
 <h2>Вход</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :username, 'Имя пользователя' %><br />
-    <%= f.text_field :username, autocomplete: "username" %>
+  <div class="mb-3">
+    <%= f.label :username, 'Имя пользователя', class: 'form-label' %>
+    <%= f.text_field :username, autocomplete: "username", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :email, 'Электронная почта' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="mb-3">
+    <%= f.label :email, 'Электронная почта', class: 'form-label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password, 'Пароль' %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="mb-3">
+    <%= f.label :password, 'Пароль', class: 'form-label' %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, 'Запомнить меня' %>
+    <div class="mb-3 form-check">
+      <%= f.check_box :remember_me, class: 'form-check-input' %>
+      <%= f.label :remember_me, 'Запомнить меня', class: 'form-check-label' %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Войти" %>
+    <%= f.submit "Войти", class: 'btn btn-dark btn-lg' %>
   </div>
 <% end %>
 
