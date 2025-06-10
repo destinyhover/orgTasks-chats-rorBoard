@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.comments.destroy_all
     @article.destroy # Удаляем статью вместе с комментариями
-    redirect_to articles_path, t('flash.articles.deleted')
+    redirect_to articles_path, notice: t('flash.articles.deleted')
   end
 
   private
@@ -65,7 +65,7 @@ class ArticlesController < ApplicationController
 
     # Остальные действия доступны только автору
     if current_user != @article.user
-      redirect_to articles_path, alert: alert: t('flash.articles.unauthorized')
+      redirect_to articles_path, alert: t('flash.articles.unauthorized')
     end
   end
 end
