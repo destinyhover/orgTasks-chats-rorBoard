@@ -13,11 +13,21 @@ ru:
       invalid: "Неверный email или пароль."
       
   activerecord:
+    models:
+      article: "Поручение"
     attributes:
       article:
+        title: "Заголовок"
+        text: "Текст"
         status:
           in_progress: "В работе"
           completed: "Выполнено"
+
+  errors:
+    messages:
+      not_saved:
+        one: "%{count} ошибка не позволила сохранить %{resource}:"
+        other: "%{count} ошибок не позволили сохранить %{resource}:"
   
   contacts:
     contact_us: "Свяжитесь с нами"
