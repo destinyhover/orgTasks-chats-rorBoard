@@ -7,6 +7,7 @@ module SessionHelpers
     fill_in :user_password, with: 'nigfigdfi231nf'
     fill_in :user_password_confirmation, with: 'nigfigdfi231nf'
 
+
     click_button 'Зарегистрироваться'
   end
 end
