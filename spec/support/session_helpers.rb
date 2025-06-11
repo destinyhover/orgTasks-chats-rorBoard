@@ -7,6 +7,6 @@ def sign_up
   fill_in :user_password, with: 'nigfigdfi231nf'
   fill_in :user_password_confirmation, with: 'nigfigdfi231nf'
 
-  click_button 'Sign up'
+  click_button 'Зарегистрироваться'
 end
 end
