@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments, only: [:create]
   end
+  namespace :admin do
+    resources :tasks, only: [:index]
+  end
   resource :contacts, only: [:create, :new]
   get 'terms' => "pages#terms"
   get 'about' => 'pages#about'
