@@ -38,6 +38,9 @@
             <li class="nav-item"><%= link_to "Поручения", articles_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "Новое поручение", new_article_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "Обратная связь", new_contacts_path, class: "nav-link" %></li>
+            <% if current_user&.admin? %>
+              <li class="nav-item"><%= link_to "Админ панель", admin_tasks_path, class: "nav-link" %></li>
+            <% end %>
             </ul>
 
             <ul class="navbar-nav ms-auto">
